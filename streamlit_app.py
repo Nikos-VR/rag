@@ -23,7 +23,7 @@ from langchain.chains import ConversationalRetrievalChain
 from PyPDF2 import PdfReader
 
 # Δημιουργία του Gemini Pro μοντέλου
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.5, google_api_key=st.secrets["GOOGLE_API_KEY"])
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", temperature=0.5, google_api_key=st.secrets["GOOGLE_API_KEY"])
 
 def get_document_chunks(pdf_docs):
     """Μετατροπή PDF σε κομμάτια κειμένου από το UploadedFile αντικείμενο."""
@@ -114,6 +114,7 @@ if prompt := st.chat_input("Ρώτησέ με κάτι για τα έγγραφ�
     
     # Αποθήκευση απάντησης στο ιστορικό
     st.session_state.messages.append({"role": "assistant", "content": answer})
+
 
 
 

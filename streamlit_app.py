@@ -4,7 +4,7 @@ from langchain_core.messages import HumanMessage, AIMessage
 from langchain.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.chains import ConversationalRetrievalChain
 from PyPDF2 import PdfReader
@@ -101,3 +101,4 @@ if prompt := st.chat_input("Ρώτησέ με κάτι για τα έγγραφ�
     
     # Αποθήκευση απάντησης στο ιστορικό
     st.session_state.messages.append({"role": "assistant", "content": answer})
+

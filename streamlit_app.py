@@ -1,3 +1,6 @@
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import streamlit as st
 import io
 from langchain_core.messages import HumanMessage, AIMessage
@@ -101,4 +104,5 @@ if prompt := st.chat_input("Ρώτησέ με κάτι για τα έγγραφ�
     
     # Αποθήκευση απάντησης στο ιστορικό
     st.session_state.messages.append({"role": "assistant", "content": answer})
+
 

@@ -1,8 +1,18 @@
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 import streamlit as st
 import io
+import asyncio
+
+# Ρύθμιση του event loop
+try:
+    _ = asyncio.get_running_loop()
+except RuntimeError as ex:  # No running event loop
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -104,5 +114,6 @@ if prompt := st.chat_input("Ρώτησέ με κάτι για τα έγγραφ�
     
     # Αποθήκευση απάντησης στο ιστορικό
     st.session_state.messages.append({"role": "assistant", "content": answer})
+
 
 

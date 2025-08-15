@@ -62,6 +62,8 @@ def create_qa_chain(vector_store):
 st.set_page_config(page_title="PDF Chatbot", layout="wide")
 st.header("💬 PDF Chatbot με Gemini Pro")
 
+st.cache_resource.clear()
+
 # Αποθήκευση ιστορικού συνομιλίας
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -114,7 +116,3 @@ if prompt := st.chat_input("Ρώτησέ με κάτι για τα έγγραφ�
     
     # Αποθήκευση απάντησης στο ιστορικό
     st.session_state.messages.append({"role": "assistant", "content": answer})
-
-
-
-
